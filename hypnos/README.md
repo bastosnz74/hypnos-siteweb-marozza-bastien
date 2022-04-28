@@ -7,5 +7,5 @@
 4ème étape : Importer la base de données (fichier hotel_reservation.sql). 
 
 CONNEXION À LA BASE DE DONNÉES
-$con = mysqli_connect('localhost','root','',''hotel_reservation'); 
+$con = mysqli_connect('localhost','root','votremotdepasse',''hotel_reservation'); 
 
