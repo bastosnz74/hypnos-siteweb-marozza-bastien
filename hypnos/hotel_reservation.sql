@@ -1,7 +1,21 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Apr 20, 2022 at 04:44 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `hotel_reservation`
@@ -10,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure `booking`
+-- Table structure for table `booking`
 --
 
 CREATE TABLE `booking` (
@@ -38,7 +52,7 @@ CREATE TABLE `booking` (
 -- --------------------------------------------------------
 
 --
--- Table structure `customer_reviews`
+-- Table structure for table `customer_reviews`
 --
 
 CREATE TABLE `customer_reviews` (
@@ -54,16 +68,16 @@ CREATE TABLE `customer_reviews` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table `customer_reviews`
+-- Dumping data for table `customer_reviews`
 --
 
 INSERT INTO `customer_reviews` (`id`, `sur_name`, `first_name`, `topic`, `email`, `subject`, `message`, `created_on`, `is_deleted`) VALUES
-(1, 'Bastien', 'Marozza', 'I want to make a complaint', 'bmodmusic@gmail.com', 'Test Complaint1', 'Test1\r\n', '1650453416000', 0);
+(1, 'Sarwar', 'Salman', 'I want to make a complaint', 'bclixtech@gmail.com', 'Test Complaint1', 'Test1\r\n', '1650453416000', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure `hotel`
+-- Table structure for table `hotel`
 --
 
 CREATE TABLE `hotel` (
@@ -82,7 +96,7 @@ CREATE TABLE `hotel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table `hotel`
+-- Dumping data for table `hotel`
 --
 
 INSERT INTO `hotel` (`id`, `mh`, `Group_id`, `first_name`, `last_name`, `description`, `city`, `address`, `is_deleted`, `is_updated`, `updated_on`, `Created_on`) VALUES
@@ -95,8 +109,9 @@ INSERT INTO `hotel` (`id`, `mh`, `Group_id`, `first_name`, `last_name`, `descrip
 (7, 1, 1, 'M Social Hotel Paris Opera', '', '', '', '', 0, 0, 2147483647, 2147483647);
 
 -- --------------------------------------------------------
+
 --
--- Table structure `suite`
+-- Table structure for table `suite`
 --
 
 CREATE TABLE `suite` (
@@ -111,7 +126,7 @@ CREATE TABLE `suite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table `suite`
+-- Dumping data for table `suite`
 --
 
 INSERT INTO `suite` (`id`, `title`, `title_image`, `price`, `description`, `created_on`, `updated_on`, `is_deleted`) VALUES
@@ -123,7 +138,7 @@ INSERT INTO `suite` (`id`, `title`, `title_image`, `price`, `description`, `crea
 -- --------------------------------------------------------
 
 --
--- Table structure `suite_gallery`
+-- Table structure for table `suite_gallery`
 --
 
 CREATE TABLE `suite_gallery` (
@@ -136,17 +151,21 @@ CREATE TABLE `suite_gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table `suite_gallery`
+-- Dumping data for table `suite_gallery`
 --
 
 INSERT INTO `suite_gallery` (`id`, `suite_id`, `suite_name`, `img`, `created_on`, `is_deleted`) VALUES
-(1, 1, 'Basic Suite', 'room1.jpg', '1650320556000', '0'),
-
+(1, 1, 'Basic Suite', '1650363756_Chinease (1).png', '1650320556000', '0'),
+(2, 1, 'Basic Suite', '1650363771_Chinease (1).png', '1650320571000', '0'),
+(3, 1, 'Basic Suite', '1650364011_Chinease (1).png', '1650320811000', '0'),
+(4, 1, 'Basic Suite', '1650364016_', '1650320816000', '0'),
+(5, 1, 'Basic Suite', '1650364036_2.jpg', '1650320836000', '0'),
+(6, 1, 'Basic Suite', '1650364063_3.jpg', '1650320863000', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -166,7 +185,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `group_id`, `mh`, `first_name`, `last_name`, `type`, `email`, `password`, `contact`, `is_deleted`, `is_updated`, `created_on`, `updated_on`) VALUES
@@ -184,81 +203,87 @@ INSERT INTO `user` (`id`, `group_id`, `mh`, `first_name`, `last_name`, `type`, `
 (19, 1, 1, 'williamlefut', '', 'CUSTOMER', 'williamlefut@gmail.com', 'williamlefut123', 0, 0, 0, 0, 0),
 (20, 1, 1, 'mathildetrombert', '', 'CUSTOMER', 'mathildetrombert@gmail.com', 'mathildetrombert', 0, 0, 0, 0, 0);
 
-
-
+--
+-- Indexes for dumped tables
 --
 
+--
+-- Indexes for table `booking`
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`id`);
 
 --
-
+-- Indexes for table `customer_reviews`
 --
 ALTER TABLE `customer_reviews`
   ADD PRIMARY KEY (`id`);
 
 --
-
+-- Indexes for table `hotel`
 --
 ALTER TABLE `hotel`
   ADD PRIMARY KEY (`id`);
 
 --
-
+-- Indexes for table `suite`
 --
 ALTER TABLE `suite`
   ADD PRIMARY KEY (`id`);
 
 --
-
+-- Indexes for table `suite_gallery`
 --
 ALTER TABLE `suite_gallery`
   ADD PRIMARY KEY (`id`);
 
 --
-
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
-
-
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
-
+-- AUTO_INCREMENT for table `customer_reviews`
 --
 ALTER TABLE `customer_reviews`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
-
+-- AUTO_INCREMENT for table `hotel`
 --
 ALTER TABLE `hotel`
   MODIFY `id` int(111) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
-
+-- AUTO_INCREMENT for table `suite`
 --
 ALTER TABLE `suite`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
-
+-- AUTO_INCREMENT for table `suite_gallery`
 --
 ALTER TABLE `suite_gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
-
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
