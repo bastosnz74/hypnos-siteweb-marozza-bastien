@@ -94,7 +94,7 @@ if (isset($_POST['btnSubmit']) )
                                     </select>
                                 </div>
                                <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="txtSurName" placeholder="Enter your sur name" required>
+                                    <input type="text" class="form-control" id="name" name="txtSurName" placeholder="Enter your surname" required>
                                 </div> 
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="name" name="txtFirstName" placeholder="Enter your first name" required>
@@ -118,7 +118,30 @@ if (isset($_POST['btnSubmit']) )
                             </div>
                         </form>
                     </div>
+                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                    <form action="" method="POST" style="width: 50%; margin-left: 450px;">
+                       <div class="g-recaptcha" data-sitekey="6LfCCLYgAAAAACnNpH3skB92lRDQ0KqfGfCBcuP3"></div><br><br>
+                    </form>
 
+        <?php
+          if(isset($_POST['submit']) && $_POST['btnSubmit'] == 'submit'){
+          if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])){
+                $secret = '6LfCCLYgAAAAAGpkGW4dO9wQgeAFefW3iB1WR7H_';
+                $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$secret.'&response='.$_POST['g-recaptcha-response']);
+                $responseData = json_decode($verifyResponse);
+                if($responseData->success)
+                { ?>
+        <div style="color: limegreen;"><b>Verification Success.</b></div>
+                <?php }
+                else
+                {?>
+                   <div style="color: red;"><b>Robot verification failed, please try again.</b></div>
+                <?php }
+                }else{?>
+                   <div style="color: red;"><b>Please do the robot verification.</b></div>
+                <?php }
+            }
+        ?>
 
                    
                 </div>
